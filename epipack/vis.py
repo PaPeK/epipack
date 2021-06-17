@@ -146,18 +146,28 @@ class App(pyglet.window.Window):
         glMatrixMode( GL_PROJECTION )
         glLoadIdentity()
         #try:
-        glOrtho( self.left, self.right, self.bottom, self.top, 1, -1 )
+        # glOrtho( self.left, self.right, self.bottom, self.top, 1, -1 )
+        glOrtho( self.left, self.left+width, self.bottom, self.bottom+height, 1, -1 )
         #except AttributeError as e:
         #    print(self.name) 
 
-    def on_resize(self, width, height):
-        """Rescale."""
-        # Set window values
-        self.width  = width
-        self.height = height
+    # def on_resize(self, width, height):
+    #     """Rescale."""
+    #     # glViewport(0.0, 0.0,
+    #     #            canvas.getBounds().width,
+    #     #            canvas.getBounds().height);
+    #     # Set window values
+    #     self.right  = self.left + width
+    #     self.top    = self.bottom + height
+    #     # self.width  = width
+    #     # self.height = height
 
-        # Initialize OpenGL context
-        self.init_gl(width, height)
+    #     glMatrixMode( GL_PROJECTION )
+    #     # glLoadIdentity()
+    #     glOrtho( self.left, self.right, self.bottom, self.top, 1, -1 )
+
+    #     # Initialize OpenGL context
+    #     self.init_gl(width, height)
 
     def on_mouse_drag(self, x, y, dx, dy, buttons, modifiers):
         """Pan."""
